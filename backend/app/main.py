@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from .database import engine
-from . import models
-from .routers import auth
-from . import oauth2
-from .routers import student
+from app.database import engine
+from app import models
+from app.routers import auth
+from app import oauth2
+from app.routers import student
 from fastapi import Depends
 from fastapi.middleware.cors import CORSMiddleware 
 
