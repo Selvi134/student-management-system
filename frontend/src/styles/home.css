@@ -1,0 +1,55 @@
+/* HERO IMAGE HOVER */
+
+.hero-image{
+    transition: transform 0.4s ease;
+}
+
+.hero-image:hover{
+    transform: scale(1.08);
+}
+
+
+/* CARD HOVER EFFECT */
+
+.feature-card{
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover{
+
+    transform: translateY(-10px);
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+
+}
+
+
+/* BUTTON HOVER */
+
+.btn-primary{
+
+    transition: all 0.3s ease;
+
+}
+
+.btn-primary:hover{
+
+    transform: scale(1.05);
+
+}
+
+
+/* FEATURE ICON HOVER */
+
+.feature-icon{
+
+    transition: transform 0.4s ease;
+
+}
+
+.feature-card:hover .feature-icon{
+
+    transform: rotate(8deg) scale(1.1);
+
+}
