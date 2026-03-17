@@ -15,30 +15,32 @@ function EditStudent() {
   const token = localStorage.getItem("token");
 
   // fetch student data
-  const getStudent = async () => {
+  useEffect(() => {
 
-    try {
+    const getStudent = async () => {
 
-      const res = await API.get(`/students/${id}`,{
-        headers:{
-          Authorization:`Bearer ${token}`
-        }
-      });
+      try {
 
-      setName(res.data.name);
-      setAge(res.data.age);
-      setEmail(res.data.email);
-      setCourse(res.data.course);
+        const res = await API.get(`/students/${id}`,{
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        });
 
-    } catch(error){
-      console.error(error);
-    }
+        setName(res.data.name);
+        setAge(res.data.age);
+        setEmail(res.data.email);
+        setCourse(res.data.course);
 
-  };
+      } catch(error){
+        console.error(error);
+      }
 
-  useEffect(()=>{
+    };
+
     getStudent();
-  },[getStudent]);
+
+  }, [id, token]); // ✅ correct dependency
 
   // update student
   const updateStudent = async () => {
