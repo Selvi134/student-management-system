@@ -50,7 +50,7 @@ def register(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     return {"message": "User created successfully"}
 
 @router.post("/login")
-def login(    form_data: OAuth2PasswordRequestForm = Depends(),
+def login(form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(database.get_db)
  ):
 

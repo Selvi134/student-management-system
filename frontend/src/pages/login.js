@@ -16,7 +16,7 @@ function Login() {
             formData.append("username", username);
             formData.append("password", password);
 
-            const res = await API.post("/auth/login", formData, {
+            const res = await API.post("/auth/login", formData.toString(), {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
