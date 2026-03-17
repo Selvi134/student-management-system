@@ -15,7 +15,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
-    "https://app.netlify.com/projects/ubiquitous-gnome-35f9f5"
+    "https://ubiquitous-gnome-35f9f5.netlify.app/"
 ]
 
 app.add_middleware(
