@@ -44,3 +44,5 @@ def profile(current_user: models.User = Depends(oauth2.get_current_user)):
     }
 
 #venv\Scripts\activate
+
+print("AUTH ROUTER LOADED")
