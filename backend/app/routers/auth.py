@@ -50,18 +50,18 @@ def register(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     return {"message": "User created successfully"}
 
 @router.post("/login")
-def login(    user: OAuth2PasswordRequestForm = Depends(),
+def login(    form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(database.get_db)
  ):
 
     db_user = db.query(models.User).filter(
-        models.User.username == user.username
+        models.User.username == form_data.username
     ).first()
 
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    if not utils.verify(user.password, db_user.password):
+    if not utils.verify(form_data.password, db_user.password):
         raise HTTPException(status_code=401, detail="Invalid password")
 
     access_token = oauth2.create_access_token(

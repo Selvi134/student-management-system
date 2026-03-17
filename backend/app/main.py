@@ -5,11 +5,26 @@ from app.routers import auth
 from app import oauth2
 from app.routers import student
 from fastapi import Depends
-from fastapi.middleware.cors import CORSMiddleware 
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.openapi.utils import get_openapi 
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title="Student API",
+        version="1.0.0",
+        description="API for Student Management",
+        routes=app.routes,
+    )
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+app.openapi = custom_openapi
 
 origins = [
     "http://localhost:3000",
