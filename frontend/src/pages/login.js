@@ -11,9 +11,15 @@ function Login() {
     const handleLogin = async () => {
 
         try{
-            const res = await API.post("/auth/login", {
-                username: username,
-                password: password
+
+            const formData = new URLSearchParams();
+            formData.append("username", username);
+            formData.append("password", password);
+
+            const res = await API.post("/auth/login", formData, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
             });
 
             console.log(res.data);
@@ -27,8 +33,7 @@ function Login() {
             console.error(error);
             alert("login failed");
         }
-        };
-    
+    };
 
     return (
         <div className = "container mt-5">
