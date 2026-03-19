@@ -50,7 +50,8 @@ def register(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     return {"message": "User created successfully"}
 
 @router.post("/login")
-def login(form_data: OAuth2PasswordRequestForm = Depends(),
+def login(
+    form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(database.get_db)
  ):
 
@@ -65,10 +66,10 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(),
         raise HTTPException(status_code=401, detail="Invalid password")
 
     access_token = oauth2.create_access_token(
-    data={
+        data={
         "user_id": db_user.id,
         "role": db_user.role
-    }
+      }
 )
 
     return {
