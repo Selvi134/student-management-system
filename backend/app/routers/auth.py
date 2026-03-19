@@ -74,6 +74,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(),
     return {
         "access_token": access_token,
         "token_type": "bearer",
+        "role": db_user.role
     }
 
 @router.post("/signup")
